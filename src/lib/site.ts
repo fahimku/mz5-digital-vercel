@@ -30,9 +30,9 @@ export const footerCompanyLinks = [
 ] as const;
 
 export const socialLinks = [
-  { label: "LinkedIn", href: "https://linkedin.com", icon: "linkedin" },
-  { label: "Dribbble", href: "https://dribbble.com", icon: "dribbble" },
-  { label: "Instagram", href: "https://instagram.com", icon: "instagram" },
+  { label: "LinkedIn", href: "https://linkedin.com/company/mz5digital", icon: "linkedin" },
+  { label: "Instagram", href: "https://instagram.com/mz5digital", icon: "instagram" },
+  { label: "X", href: "https://x.com/mz5digital", icon: "x" },
 ] as const;
 
 export const marketingLinks = [

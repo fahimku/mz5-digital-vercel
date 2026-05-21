@@ -8,7 +8,7 @@ export function Contact() {
   return (
     <section
       id="contact"
-      className="contact-section relative overflow-hidden border-t border-white/[0.06] py-12 lg:py-20"
+      className="contact-section relative overflow-hidden border-t border-white/[0.06] py-10 sm:py-12 lg:py-20"
     >
       <div
         aria-hidden
@@ -16,7 +16,7 @@ export function Contact() {
       />
 
       <Container className="relative z-10">
-        <div className="grid items-start gap-12 lg:grid-cols-2 lg:gap-16 xl:gap-24">
+        <div className="grid items-start gap-8 sm:gap-10 lg:grid-cols-2 lg:gap-16 xl:gap-24">
           <GrowReveal className="lg:pt-4">
             <p className="flex items-center gap-2">
               <span className="h-1.5 w-1.5 rounded-full bg-[#ff4d00] shadow-[0_0_10px_rgba(255,77,0,0.9)]" />

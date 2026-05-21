@@ -51,9 +51,15 @@ export function Button({
   };
 
   if (href) {
+    const fullWidth =
+      /\b!?w-full\b/.test(className) &&
+      !/\b(sm|md|lg|xl|2xl):!?w-auto\b/.test(className);
     return (
-      <motion.div {...motionProps} className="inline-flex">
-        <Link href={href} className={classes}>
+      <motion.div
+        {...motionProps}
+        className={fullWidth ? "flex w-full" : "inline-flex"}
+      >
+        <Link href={href} className={classes} onClick={onClick}>
           {content}
         </Link>
       </motion.div>

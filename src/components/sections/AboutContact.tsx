@@ -27,7 +27,7 @@ export function AboutContact() {
   return (
     <section
       id="about"
-      className="about-contact-section relative overflow-hidden pt-16 pb-8 lg:pt-24 lg:pb-10"
+      className="about-contact-section relative overflow-hidden pt-14 pb-6 sm:pt-16 sm:pb-8 lg:pt-24 lg:pb-10"
     >
       <div
         aria-hidden

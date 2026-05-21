@@ -84,7 +84,7 @@ export function ContactForm() {
 
   return (
     <ContactFormGlow>
-      <form onSubmit={handleSubmit} noValidate className="space-y-5 p-6 sm:p-8">
+      <form onSubmit={handleSubmit} noValidate className="space-y-4 p-4 sm:space-y-5 sm:p-6 md:p-8">
         <input
           type="checkbox"
           name="botcheck"
@@ -120,7 +120,7 @@ export function ContactForm() {
           </motion.div>
         ) : (
           <>
-            <div className="grid gap-5 sm:grid-cols-2">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5">
               <Field
                 label="Name"
                 name="name"
@@ -165,7 +165,7 @@ export function ContactForm() {
                 <span className="ml-1 text-[#ff4d00]">*</span>
               </label>
               <div
-                className={`grid grid-cols-2 gap-2 sm:flex sm:flex-wrap sm:gap-2.5 ${
+                className={`grid grid-cols-1 gap-2 min-[420px]:grid-cols-2 sm:flex sm:flex-wrap sm:gap-2.5 ${
                   fieldErrors.budget
                     ? "rounded-xl p-2 ring-1 ring-inset ring-red-400/40"
                     : ""

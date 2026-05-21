@@ -21,7 +21,7 @@ export function Hero() {
   return (
     <section
       ref={sectionRef}
-      className="relative overflow-hidden pt-28 pb-16 lg:pt-36 lg:pb-20"
+      className="relative overflow-hidden pt-24 pb-12 sm:pt-28 sm:pb-16 lg:pt-36 lg:pb-20"
     >
       <div
         aria-hidden
@@ -47,7 +47,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 28, scale: 0.96 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               transition={{ duration: 0.75, delay: 0.18, ease: [0.22, 1, 0.36, 1] }}
-              className="text-on-texture text-4xl leading-[1.06] font-semibold tracking-tight text-white sm:text-5xl lg:text-[3.35rem] xl:text-6xl"
+              className="text-on-texture text-[1.75rem] leading-[1.08] font-semibold tracking-tight text-white min-[380px]:text-4xl sm:text-5xl lg:text-[3.35rem] xl:text-6xl"
             >
               Brands built to <Accent>grow</Accent>, systems built to{" "}
               <Accent>scale</Accent>.
@@ -59,15 +59,16 @@ export function Hero() {
               transition={{ duration: 0.6, delay: 0.32 }}
               className="text-on-texture mt-6 max-w-xl text-base leading-relaxed text-zinc-400 sm:text-lg"
             >
-              We turn ambitious ideas into digital products — branding, web,
-              growth and technology in one studio built for momentum.
+              We partner with ambitious teams to turn ideas into 
+              powerful digital products—beautifully crafted, 
+              strategically built, and engineered for results.
             </motion.p>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.42 }}
-              className="mt-10 flex flex-wrap items-center gap-4"
+              className="mt-8 flex flex-col gap-3 max-md:[&_a]:flex max-md:[&_a]:w-full md:mt-10 md:flex-row md:flex-nowrap md:items-center md:gap-4"
             >
               <Button href="/#contact" showArrow>
                 Start a project
@@ -94,9 +95,9 @@ export function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.5 }}
-          className="mt-14 lg:mt-20"
+          className="mt-10 sm:mt-14 lg:mt-20"
         >
-          <div className="mb-12 lg:hidden">
+          <div className="mb-8 max-w-md mx-auto sm:mb-10 lg:mb-12 lg:hidden">
             <HeroTechVisual />
           </div>
 

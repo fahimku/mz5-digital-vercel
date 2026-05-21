@@ -28,7 +28,7 @@ export function Process() {
   return (
     <section
       id="process"
-      className="relative border-y border-white/[0.06] py-16 lg:py-28"
+      className="relative border-y border-white/[0.06] py-14 sm:py-16 lg:py-28"
     >
       <div
         aria-hidden
@@ -36,7 +36,7 @@ export function Process() {
       />
 
       <Container className="relative z-10">
-        <div className="grid gap-12 lg:grid-cols-[minmax(0,320px)_1fr] lg:items-start lg:gap-14 xl:gap-20">
+        <div className="grid gap-10 sm:gap-12 lg:grid-cols-[minmax(0,320px)_1fr] lg:items-start lg:gap-14 xl:gap-20">
           <div className="lg:sticky lg:top-28">
             <GrowReveal>
               <p className="flex items-center gap-2">
@@ -113,13 +113,15 @@ export function Process() {
                     />
                   </div>
 
-                  <p className="process-step-num">
-                    <span className="process-step-num-dot" aria-hidden />
-                    {step.step}
-                  </p>
+                  <div className="process-step-content">
+                    <p className="process-step-num">
+                      <span className="process-step-num-dot" aria-hidden />
+                      {step.step}
+                    </p>
 
-                  <h3 className="process-step-title">{step.title}</h3>
-                  <p className="process-step-desc">{step.description}</p>
+                    <h3 className="process-step-title">{step.title}</h3>
+                    <p className="process-step-desc">{step.description}</p>
+                  </div>
                 </motion.div>
               ))}
             </div>

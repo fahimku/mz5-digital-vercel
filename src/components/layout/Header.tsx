@@ -21,13 +21,13 @@ export function Header() {
   return (
     <motion.header
       style={{ backgroundColor: background }}
-      className="fixed top-0 right-0 left-0 z-50 backdrop-blur-md"
+      className="fixed top-0 right-0 left-0 z-50 backdrop-blur-md supports-[padding:max(0px)]:pt-[env(safe-area-inset-top)]"
     >
       <motion.div
         style={{ opacity: borderOpacity }}
         className="absolute inset-x-0 bottom-0 h-px bg-white/10"
       />
-      <Container className="flex h-16 items-center justify-between lg:h-[72px]">
+      <Container className="flex h-14 items-center justify-between sm:h-16 lg:h-[72px]">
         <Logo />
 
         <nav

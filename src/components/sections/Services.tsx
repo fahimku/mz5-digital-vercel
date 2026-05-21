@@ -8,7 +8,7 @@ import { services, servicesIntro } from "@/lib/site";
 
 export function Services() {
   return (
-    <section id="services" className="relative py-16 lg:py-28">
+    <section id="services" className="relative py-14 sm:py-16 lg:py-28">
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_60%_40%_at_50%_0%,rgba(255,77,0,0.05),transparent_60%)]"
@@ -43,7 +43,7 @@ export function Services() {
           </GrowReveal>
         </div>
 
-        <GrowRevealStagger className="mt-12 grid gap-4 sm:grid-cols-2 sm:gap-5 lg:mt-14 lg:grid-cols-3 lg:gap-5">
+        <GrowRevealStagger className="mt-10 grid grid-cols-1 gap-4 sm:mt-12 md:grid-cols-2 md:gap-5 lg:mt-14 lg:grid-cols-3">
           {services.map((service) => (
             <ServiceCard key={service.title} {...service} />
           ))}
