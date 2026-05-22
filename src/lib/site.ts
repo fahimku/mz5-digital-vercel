@@ -6,21 +6,67 @@ export const siteConfig = {
   copyright: "© 2026 MZ5 Digital. All rights reserved.",
 };
 
-export const navLinks = [
-  { label: "Services", href: "/#services" },
-  { label: "Work", href: "/#services" },
+export const mainNavLinks = [
   { label: "Process", href: "/#process" },
   { label: "About", href: "/#about" },
   { label: "Contact", href: "/#contact" },
 ] as const;
 
+export const marketingMenuLinks = [
+  {
+    label: "Digital Marketing",
+    href: "/services/ppc",
+    description: "Paid search, social & performance growth",
+  },
+  {
+    label: "SEO & Content",
+    href: "/services/seo",
+    description: "Organic growth & technical SEO",
+  },
+] as const;
+
+export const webDevelopmentMenuLinks = [
+  {
+    label: "SaaS Application",
+    href: "/services/web-development",
+    description: "Scalable SaaS products & platforms",
+  },
+  {
+    label: "Web Development",
+    href: "/services/web-development",
+    description: "Fast, scalable sites & web apps",
+  },
+] as const;
+
+export const aiMenuLinks = [
+  {
+    label: "AI Agents",
+    href: "/services/ai-agents",
+    description: "Custom agents for ops & support",
+  },
+  {
+    label: "AI Automation",
+    href: "/services/crm-automation",
+    description: "Workflows, integrations & intelligent automation",
+  },
+] as const;
+
+export const navMenus = [
+  { label: "Marketing", items: marketingMenuLinks },
+  { label: "Web Development", items: webDevelopmentMenuLinks },
+  { label: "AI", items: aiMenuLinks },
+] as const;
+
+/** @deprecated Use mainNavLinks */
+export const navLinks = mainNavLinks;
+
 export const footerServiceLinks = [
-  { label: "Branding & Identity", href: "/services/branding" },
-  { label: "Web Development", href: "/services/web-development" },
-  { label: "Shopify & E-commerce", href: "/services/web-development" },
+  { label: "Digital Marketing", href: "/services/ppc" },
   { label: "SEO & Content", href: "/services/seo" },
-  { label: "Performance Marketing", href: "/services/ppc" },
-  { label: "Creative Direction", href: "/services/branding" },
+  { label: "SaaS Application", href: "/services/web-development" },
+  { label: "Web Development", href: "/services/web-development" },
+  { label: "AI Agents", href: "/services/ai-agents" },
+  { label: "AI Automation", href: "/services/crm-automation" },
 ] as const;
 
 export const footerCompanyLinks = [
@@ -35,47 +81,22 @@ export const socialLinks = [
   { label: "X", href: "https://x.com/mz5digital", icon: "x" },
 ] as const;
 
-export const marketingLinks = [
-  {
-    label: "Web Development",
-    href: "/services/web-development",
-    description: "Fast, scalable sites & web apps",
-  },
-  {
-    label: "Online Advertising",
-    href: "/services/ppc",
-    description: "Paid search, social & performance",
-  },
-  {
-    label: "CRM & Automation",
-    href: "/services/crm-automation",
-    description: "HubSpot, workflows & integrations",
-  },
-] as const;
+/** @deprecated Use marketingMenuLinks */
+export const marketingLinks = marketingMenuLinks;
 
-export const aiLinks = [
-  {
-    label: "AI Consulting",
-    href: "/services/ai-consulting",
-    description: "Strategy, roadmaps & adoption",
-  },
-  {
-    label: "AI Agents",
-    href: "/services/ai-agents",
-    description: "Custom agents for ops & support",
-  },
-] as const;
+/** @deprecated Use aiMenuLinks */
+export const aiLinks = aiMenuLinks;
 
-/** @deprecated Use marketingLinks — kept for service pages */
+/** @deprecated Use navMenus */
 export const serviceLinks = [
-  ...marketingLinks,
-  { label: "Branding", href: "/services/branding", description: "Identity & visual systems" },
-  { label: "SEO", href: "/services/seo", description: "Organic growth & technical SEO" },
+  ...marketingMenuLinks,
+  ...webDevelopmentMenuLinks,
+  ...aiMenuLinks,
 ] as const;
 
 export const stats = [
-  { value: "120+", label: "Projects Delivered", icon: "users" },
-  { value: "8 yrs", label: "Proven Expertise", icon: "clock" },
+  { value: "100+", label: "Projects Delivered", icon: "users" },
+  { value: "10 yrs", label: "Proven Expertise", icon: "clock" },
   { value: "3.4M+", label: "Users Impacted", icon: "star" },
   { value: "24/7", label: "Support", icon: "bolt" },
 ] as const;
@@ -124,30 +145,16 @@ export const servicesIntro =
 
 export const services = [
   {
-    title: "Branding & Identity",
+    category: "Marketing",
+    title: "Digital Marketing",
     description:
-      "Positioning, visual systems and brand guidelines that make you unmistakable in your market.",
-    tags: ["Strategy", "Design", "Positioning"],
-    href: "/services/branding",
-    icon: "code",
+      "Paid search, social and performance campaigns tuned for ROAS with clear reporting and ongoing optimization.",
+    tags: ["Google Ads", "Meta Ads", "CRO"],
+    href: "/services/ppc",
+    icon: "chart",
   },
   {
-    title: "Web Development",
-    description:
-      "High-performance marketing sites and web apps built on modern stacks with clean architecture.",
-    tags: ["Next.js", "React", "CMS"],
-    href: "/services/web-development",
-    icon: "display",
-  },
-  {
-    title: "Shopify & E-commerce",
-    description:
-      "Conversion-focused storefronts, custom themes and integrations that scale with your revenue.",
-    tags: ["Shopify", "UX/UI", "Integrations"],
-    href: "/services/web-development",
-    icon: "cart",
-  },
-  {
+    category: "Marketing",
     title: "SEO & Content",
     description:
       "Technical SEO, content strategy and authority building designed for sustainable organic growth.",
@@ -156,20 +163,40 @@ export const services = [
     icon: "search",
   },
   {
-    title: "Performance Marketing",
+    category: "Web Development",
+    title: "SaaS Application",
     description:
-      "Paid search and social campaigns tuned for ROAS, with clear reporting and ongoing optimization.",
-    tags: ["Google Ads", "Meta Ads", "Email"],
-    href: "/services/ppc",
-    icon: "chart",
+      "Multi-tenant SaaS platforms, dashboards and subscription products built on modern stacks to scale with your users.",
+    tags: ["SaaS", "APIs", "Billing"],
+    href: "/services/web-development",
+    icon: "cloud",
   },
   {
-    title: "Creative Direction",
+    category: "Web Development",
+    title: "Web Development",
     description:
-      "Campaign concepts, art direction and motion that keep your brand cohesive across every touchpoint.",
-    tags: ["Branding", "Motion", "Art Direction"],
-    href: "/services/branding",
-    icon: "palette",
+      "High-performance marketing sites and web apps with clean architecture, strong UX and measurable conversion.",
+    tags: ["Next.js", "React", "CMS"],
+    href: "/services/web-development",
+    icon: "code",
+  },
+  {
+    category: "AI",
+    title: "AI Agents",
+    description:
+      "Custom AI agents for support, sales ops and internal workflows — connected to your data and built for reliability.",
+    tags: ["Agents", "Support", "Integrations"],
+    href: "/services/ai-agents",
+    icon: "robot",
+  },
+  {
+    category: "AI",
+    title: "AI Automation",
+    description:
+      "Intelligent workflows, CRM automation and stack integrations that connect tools and follow up without manual busywork.",
+    tags: ["Automation", "HubSpot", "Workflows"],
+    href: "/services/crm-automation",
+    icon: "bolt",
   },
 ] as const;
 
@@ -233,12 +260,13 @@ export const budgetOptions = [
 ] as const;
 
 export const needOptions = [
-  "Branding",
+  "Digital Marketing",
+  "SEO & Content",
+  "SaaS Application",
   "Web Development",
-  "E-commerce",
-  "SEO",
-  "Paid Media",
-  "Full Stack / Multiple",
+  "AI Agents",
+  "AI Automation",
+  "Multiple services",
 ] as const;
 
 export type ServiceSlug =

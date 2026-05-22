@@ -6,8 +6,9 @@ import { Button } from "@/components/ui/Button";
 import { Logo } from "@/components/ui/Logo";
 import { Container } from "@/components/ui/Container";
 import { MobileNav } from "@/components/layout/MobileNav";
+import { NavDropdown } from "@/components/layout/NavDropdown";
 import { navItemClass } from "@/components/layout/nav-styles";
-import { navLinks } from "@/lib/site";
+import { mainNavLinks, navMenus } from "@/lib/site";
 
 export function Header() {
   const { scrollY } = useScroll();
@@ -35,7 +36,12 @@ export function Header() {
           aria-label="Main"
         >
           <ul className="flex items-center gap-1 lg:gap-2">
-            {navLinks.map((link) => (
+            {navMenus.map((menu) => (
+              <li key={menu.label}>
+                <NavDropdown label={menu.label} items={menu.items} />
+              </li>
+            ))}
+            {mainNavLinks.map((link) => (
               <li key={link.href + link.label}>
                 <Link href={link.href} className={navItemClass}>
                   {link.label}

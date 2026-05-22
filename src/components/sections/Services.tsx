@@ -45,7 +45,10 @@ export function Services() {
 
         <GrowRevealStagger className="mt-10 grid grid-cols-1 gap-4 sm:mt-12 md:grid-cols-2 md:gap-5 lg:mt-14 lg:grid-cols-3">
           {services.map((service) => (
-            <ServiceCard key={service.title} {...service} />
+            <ServiceCard
+              key={`${service.category}-${service.title}`}
+              {...service}
+            />
           ))}
         </GrowRevealStagger>
       </Container>

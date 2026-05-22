@@ -3,12 +3,12 @@
 import { motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faCartShopping,
+  faBolt,
   faChartColumn,
+  faCloud,
   faCode,
-  faDesktop,
   faMagnifyingGlass,
-  faPalette,
+  faRobot,
 } from "@fortawesome/free-solid-svg-icons";
 import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { ArrowRight } from "lucide-react";
@@ -21,14 +21,15 @@ const serviceIconMap: Record<
   IconDefinition
 > = {
   code: faCode,
-  display: faDesktop,
-  cart: faCartShopping,
+  cloud: faCloud,
   search: faMagnifyingGlass,
   chart: faChartColumn,
-  palette: faPalette,
+  robot: faRobot,
+  bolt: faBolt,
 };
 
 type ServiceCardProps = {
+  category: string;
   title: string;
   description: string;
   tags: readonly string[];
@@ -37,6 +38,7 @@ type ServiceCardProps = {
 };
 
 export function ServiceCard({
+  category,
   title,
   description,
   tags,
@@ -59,9 +61,14 @@ export function ServiceCard({
                 className="service-card-fa-icon"
               />
             </div>
-            <h3 className="pt-1.5 text-base font-semibold leading-snug tracking-tight text-white sm:text-lg">
-              {title}
-            </h3>
+            <div className="min-w-0 flex-1">
+              <p className="text-[10px] font-medium tracking-[0.18em] text-[#ff4d00] uppercase">
+                {category}
+              </p>
+              <h3 className="pt-0.5 text-base font-semibold leading-snug tracking-tight text-white sm:text-lg">
+                {title}
+              </h3>
+            </div>
           </div>
 
           <p className="relative mb-5 text-sm leading-relaxed text-zinc-500">

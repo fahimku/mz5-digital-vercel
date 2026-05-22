@@ -1,12 +1,13 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
+import { ChevronDown } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { Button } from "@/components/ui/Button";
 import { Logo } from "@/components/ui/Logo";
-import { navLinks } from "@/lib/site";
+import { mainNavLinks, navMenus } from "@/lib/site";
 
 const menuItem = {
   hidden: { opacity: 0, x: 24 },
@@ -24,6 +25,7 @@ const menuItem = {
 export function MobileNav() {
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [expandedMenu, setExpandedMenu] = useState<string | null>(null);
 
   useEffect(() => setMounted(true), []);
 
@@ -41,7 +43,12 @@ export function MobileNav() {
     };
   }, [open]);
 
-  const close = () => setOpen(false);
+  const close = () => {
+    setOpen(false);
+    setExpandedMenu(null);
+  };
+
+  let itemIndex = 0;
 
   const panel = (
     <AnimatePresence>
@@ -92,29 +99,99 @@ export function MobileNav() {
 
             <nav className="relative flex-1 overflow-y-auto px-5 py-6" aria-label="Mobile">
               <ul className="flex flex-col gap-1">
-                {navLinks.map((link, i) => (
-                  <motion.li
-                    key={link.href + link.label}
-                    custom={i}
-                    variants={menuItem}
-                    initial="hidden"
-                    animate="show"
-                  >
-                    <Link
-                      href={link.href}
-                      onClick={close}
-                      className="mobile-menu-link group"
+                {navMenus.map((menu) => {
+                  const isExpanded = expandedMenu === menu.label;
+                  const menuIndex = itemIndex++;
+
+                  return (
+                    <motion.li
+                      key={menu.label}
+                      custom={menuIndex}
+                      variants={menuItem}
+                      initial="hidden"
+                      animate="show"
                     >
-                      <span className="mobile-menu-link-index">
-                        {String(i + 1).padStart(2, "0")}
-                      </span>
-                      <span className="mobile-menu-link-label">{link.label}</span>
-                      <span className="mobile-menu-link-arrow" aria-hidden>
-                        →
-                      </span>
-                    </Link>
-                  </motion.li>
-                ))}
+                      <button
+                        type="button"
+                        onClick={() =>
+                          setExpandedMenu(isExpanded ? null : menu.label)
+                        }
+                        className="mobile-menu-link group w-full"
+                        aria-expanded={isExpanded}
+                      >
+                        <span className="mobile-menu-link-index">
+                          {String(menuIndex + 1).padStart(2, "0")}
+                        </span>
+                        <span className="mobile-menu-link-label flex-1 text-left">
+                          {menu.label}
+                        </span>
+                        <ChevronDown
+                          className={`h-4 w-4 shrink-0 text-zinc-500 transition-transform duration-300 ${isExpanded ? "rotate-180" : ""}`}
+                          aria-hidden
+                        />
+                      </button>
+
+                      <AnimatePresence>
+                        {isExpanded && (
+                          <motion.ul
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: "auto", opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            transition={{ duration: 0.25 }}
+                            className="overflow-hidden pl-10"
+                          >
+                            {menu.items.map((item) => (
+                              <li key={item.href + item.label}>
+                                <Link
+                                  href={item.href}
+                                  onClick={close}
+                                  className="block rounded-lg py-2.5 transition hover:bg-white/5"
+                                >
+                                  <span className="text-sm text-white">
+                                    {item.label}
+                                  </span>
+                                  {item.description && (
+                                    <span className="mt-0.5 block text-xs text-zinc-500">
+                                      {item.description}
+                                    </span>
+                                  )}
+                                </Link>
+                              </li>
+                            ))}
+                          </motion.ul>
+                        )}
+                      </AnimatePresence>
+                    </motion.li>
+                  );
+                })}
+
+                {mainNavLinks.map((link) => {
+                  const linkIndex = itemIndex++;
+
+                  return (
+                    <motion.li
+                      key={link.href + link.label}
+                      custom={linkIndex}
+                      variants={menuItem}
+                      initial="hidden"
+                      animate="show"
+                    >
+                      <Link
+                        href={link.href}
+                        onClick={close}
+                        className="mobile-menu-link group"
+                      >
+                        <span className="mobile-menu-link-index">
+                          {String(linkIndex + 1).padStart(2, "0")}
+                        </span>
+                        <span className="mobile-menu-link-label">{link.label}</span>
+                        <span className="mobile-menu-link-arrow" aria-hidden>
+                          →
+                        </span>
+                      </Link>
+                    </motion.li>
+                  );
+                })}
               </ul>
             </nav>
 
