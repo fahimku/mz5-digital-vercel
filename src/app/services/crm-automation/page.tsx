@@ -1,11 +1,20 @@
-import type { Metadata } from "next";
 import { ServicePageTemplate } from "@/components/services/ServicePageTemplate";
+import { createMetadata } from "@/lib/seo";
+import { servicePages } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "CRM & Automation",
-  description:
-    "CRM setup, marketing automation and integrations from MZ5 Digital.",
-};
+const page = servicePages["crm-automation"];
+
+export const metadata = createMetadata({
+  title: page.title,
+  description: page.description,
+  path: "/services/crm-automation",
+  keywords: [
+    "CRM automation",
+    "HubSpot setup",
+    "marketing automation Ontario",
+    "sales workflow automation",
+  ],
+});
 
 export default function CrmAutomationPage() {
   return <ServicePageTemplate slug="crm-automation" />;

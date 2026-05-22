@@ -30,6 +30,12 @@ npm run start
 
 Or connect the repo to Vercel and use the default Next.js settings.
 
+### SEO & link previews (WhatsApp, LinkedIn, etc.)
+
+Set **`NEXT_PUBLIC_SITE_URL`** to your live URL (see `.env.example`). This ensures Open Graph images and canonical URLs use absolute HTTPS links — required for rich previews when sharing.
+
+After deploying, refresh cached previews with the [Facebook Sharing Debugger](https://developers.facebook.com/tools/debug/) (also used by WhatsApp).
+
 ## Project structure
 
 ```
