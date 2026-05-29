@@ -45,7 +45,7 @@ export function NavDropdown({ label, items }: NavDropdownProps) {
           className={`h-3.5 w-3.5 shrink-0 opacity-70 transition-transform duration-300 ${open ? "rotate-180" : ""}`}
           aria-hidden
         />
-      </button>
+      </button> 
 
       <AnimatePresence>
         {open && (
