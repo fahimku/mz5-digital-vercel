@@ -8,7 +8,7 @@ import { Container } from "@/components/ui/Container";
 import { MobileNav } from "@/components/layout/MobileNav";
 import { NavDropdown } from "@/components/layout/NavDropdown";
 import { navItemClass } from "@/components/layout/nav-styles";
-import { mainNavLinks, navMenus } from "@/lib/site";
+import { mainNavLinks, navMenus, siteConfig } from "@/lib/site";
 
 export function Header() {
   const { scrollY } = useScroll();
@@ -28,14 +28,14 @@ export function Header() {
         style={{ opacity: borderOpacity }}
         className="absolute inset-x-0 bottom-0 h-px bg-white/10"
       />
-      <Container className="flex h-14 items-center justify-between sm:h-16 lg:h-[72px]">
+      <Container className="flex h-14 items-center gap-3 sm:h-16 sm:gap-4 lg:h-[72px] lg:gap-6">
         <Logo />
 
         <nav
-          className="hidden md:flex md:flex-1 md:items-center md:justify-center"
+          className="hidden min-w-0 flex-1 md:flex md:items-center md:justify-center"
           aria-label="Main"
         >
-          <ul className="flex items-center gap-1 lg:gap-2">
+          <ul className="flex items-center gap-0.5 lg:gap-2">
             {navMenus.map((menu) => (
               <li key={menu.label}>
                 <NavDropdown label={menu.label} items={menu.items} />
@@ -51,12 +51,19 @@ export function Header() {
           </ul>
         </nav>
 
-        <div className="flex shrink-0 items-center gap-3">
+        <div className="ml-auto flex shrink-0 items-center gap-2 sm:gap-2.5 lg:gap-3">
+          <Button
+            href={siteConfig.userPortalUrl}
+            variant="secondary"
+            className="hidden !px-3.5 !py-2 text-xs whitespace-nowrap sm:inline-flex md:!px-4 md:!py-2.5 md:text-sm lg:!px-5"
+          >
+            User Portal
+          </Button>
           <Button
             href="/#contact"
             variant="primary"
             showArrow
-            className="hidden !px-5 !py-2.5 text-sm sm:inline-flex"
+            className="hidden !px-3.5 !py-2 text-xs whitespace-nowrap sm:inline-flex md:!px-4 md:!py-2.5 md:text-sm lg:!px-5"
           >
             Start a project
           </Button>

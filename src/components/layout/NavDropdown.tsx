@@ -58,7 +58,7 @@ export function NavDropdown({ label, items }: NavDropdownProps) {
           >
             {items.map((item, i) => (
               <motion.div
-                key={item.href}
+                key={`${item.href}-${item.label}`}
                 initial={{ opacity: 0, x: -8 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: i * 0.04 }}

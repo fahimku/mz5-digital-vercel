@@ -2,7 +2,8 @@ export const siteConfig = {
   name: "MZ5 Digital",
   tagline: "DIGITAL GROWTH. POWERED BY DESIGN.",
   email: "hello@mz5digital.com",
-  contactInbox: "muhammad.fahim@mz5digital.com",
+  contactInbox: "hello@mz5digital.com",
+  userPortalUrl: "https://user.mz5digital.com/",
   copyright: "© 2026 MZ5 Digital. All rights reserved.",
 };
 

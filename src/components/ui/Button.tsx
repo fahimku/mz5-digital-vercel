@@ -14,6 +14,8 @@ type ButtonProps = {
   onClick?: () => void;
   disabled?: boolean;
   showArrow?: boolean;
+  target?: string;
+  rel?: string;
 };
 
 const variants = {
@@ -31,6 +33,8 @@ export function Button({
   onClick,
   disabled = false,
   showArrow = false,
+  target,
+  rel,
 }: ButtonProps) {
   const classes =
     `inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold tracking-tight transition-all duration-300 disabled:cursor-not-allowed disabled:opacity-50 ${variants[variant]} ${className}`.trim();
@@ -54,14 +58,29 @@ export function Button({
     const fullWidth =
       /\b!?w-full\b/.test(className) &&
       !/\b(sm|md|lg|xl|2xl):!?w-auto\b/.test(className);
+    const isExternal = href.startsWith("http");
+    const linkClassName = classes;
+    const externalProps = isExternal || target === "_blank"
+      ? {
+          target: target ?? "_blank",
+          rel: rel ?? "noopener noreferrer",
+        }
+      : {};
+
     return (
       <motion.div
         {...motionProps}
         className={fullWidth ? "flex w-full" : "inline-flex"}
       >
-        <Link href={href} className={classes} onClick={onClick}>
-          {content}
-        </Link>
+        {isExternal ? (
+          <a href={href} className={linkClassName} onClick={onClick} {...externalProps}>
+            {content}
+          </a>
+        ) : (
+          <Link href={href} className={linkClassName} onClick={onClick} {...externalProps}>
+            {content}
+          </Link>
+        )}
       </motion.div>
     );
   }
